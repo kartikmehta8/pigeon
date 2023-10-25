@@ -1,8 +1,10 @@
 import Home from "./pages/Home";
 import { ConnectWallet } from "@thirdweb-dev/react";
+import { useConnectionStatus } from "@thirdweb-dev/react";
 
 function App() {
-    return (
+    const connectionStatus = useConnectionStatus();
+    if (connectionStatus === "disconnected") return (
         <div>
             <div className="flex justify-between mx-20 my-6">
                 <div>
@@ -30,6 +32,8 @@ function App() {
             </div>
         </div>
     );
+    if (connectionStatus === "connected")
+    return <p style={{color:"#ffffff",}}> dashboard </p>;
 }
 
 export default App;
